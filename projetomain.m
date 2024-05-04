@@ -1,7 +1,7 @@
 while 1
-
+    
     clc; clear ; close all;
-grid on;
+
     fprintf(['menu: \n' ...
         '1 rl\n' ...
         '2 rc\n' ...
@@ -69,16 +69,19 @@ grid on;
                 % Intervalo de tempo
                 fprintf('INTERVALO DE TEMPO: \n');
                 ti = input('Indique o valor do itempo inicial (s): \n');
-                tf = input('Indique o valor do itempo final (s): '\n);
+                tf = input('Indique o valor do itempo final (s):   \n');
 
 
                 while tf-ti <= 0
                     fprintf('Deve inserir um valor maior que 0!\n')
                     ti = input('Indique o valor do itempo inicial (s): \n');
-                    tf = input('Indique o valor do itempo final (s): '\n);
+                    tf = input('Indique o valor do itempo final (s):   \n');
                 end
-
-
+                R=input('valor da resistencia Ohm');
+                L=input('valor da bobine Henry');
+                C=input('valor do condensador Farad');
+                A=input('valor de amplitude ou dc da fonte de corrente Ampere');
+                RLC_Paralelo (R, L, C, ti, tf, A);
 
             end
 

@@ -77,8 +77,7 @@ end
     plot(t,y(:,1));
     ylabel('tensao Vc (V)')
     xlabel('tempo (s)')
-    figure
-      
+    
 
 
 
