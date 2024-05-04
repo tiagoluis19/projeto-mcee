@@ -1,6 +1,46 @@
+while 1
+
+    clc; clear ; close all;
+
+    fprintf(['menu: \n' ...
+        '1 rl\n' ...
+        '2 rc\n' ...
+        '3 rlc\n' ...
+        '4 sair\n'])
+
+    opcao= input('opção: ');
+
+    switch opcao
+
+        case 1  %circuito rl
+            fprintf(['\n selecionou rl\n' ...
+                'escolha se quer o citcuto em: \n' ...
+                '1 série' ...
+                '2 paralelo'])
+            seroupar = input('opção: ')
+            if seroupar==1
+                disp('circuito sér rl')
+            else
+                disp('circuito par rl')
+            end
+
+        case 2 %circuito rc
 
 
+        case 3 %circuito rlc
 
+        case 4 %saida
+            fprintf(['\n deseja sair? \n' ...
+                's - sim \n' ...
+                'n- não \n'])
+            sn=input('opção: ','s');
+            if ismember(['s', 'S', 'sim' ,'Sim'],)
+                  return
+           end
 
+    end
 
-e
+<<<<<<< HEAD
+end
+=======
+>>>>>>> f83be31af86e6a5ecb66b4b3d69028fa8a315292
