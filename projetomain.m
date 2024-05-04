@@ -1,7 +1,7 @@
 while 1
 
     clc; clear ; close all;
-
+grid on;
     fprintf(['menu: \n' ...
         '1 rl\n' ...
         '2 rc\n' ...
@@ -65,6 +65,19 @@ while 1
 
             else
                 disp('circuito paralelo rlc') %paralelo
+
+                % Intervalo de tempo
+                fprintf('INTERVALO DE TEMPO: \n');
+                ti = input('Indique o valor do itempo inicial (s): \n');
+                tf = input('Indique o valor do itempo final (s): '\n);
+
+
+                while tf-ti <= 0
+                    fprintf('Deve inserir um valor maior que 0!\n')
+                    ti = input('Indique o valor do itempo inicial (s): \n');
+                    tf = input('Indique o valor do itempo final (s): '\n);
+                end
+
 
 
             end

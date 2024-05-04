@@ -1,33 +1,84 @@
-function RLC_Paralelo
-    clc
-    % Valor da fonte de corrente
-    fprintf('VALOR DA FONTE DE CORRENTE: \n');
-    i = input('Indique o valor da fonte de corrente (AC): ', 's');
+function RLC_Paralelo (R, L, C, ti, tf, A)
 
-    % Parametros
-    fprintf('PARAMETROS: \n');
-    L = input('Indique o valor da bobina (H): ');
-    R = input('Indique o valor da resistência (Ohms): ');
-    C = input('Indique o valor do condensador (F): ');
 
-    % Condicoes iniciais
-    fprintf('CONDIÇÕES INICIAIS: \n');
-    vc0 = input('Valor da carga inicial no condensador: ');
+h=input('intoduza um intervalo entre os pontos (s)');
+if isnan(h)
+    tempo=linspace(ti,tf,20);
+else
+    if h>=0
+        if tf>(h*5)
+            tempo=ti:h:tf;
+        else
+            tempo=linspace(ti,tf,20);
+        end
+    else
+        tempo=linspace(ti,tf,20);
+    end
+end
 
-    % Intervalo de tempo
-    fprintf('INTERVALO DE TEMPO: \n');
-    t = input('Indique o valor do intervalo de tempo (s): ');
-    
-    while t <= 0
-        fprintf('Deve inserir um valor maior que 0!\n')
-        t = input('Indique o valor do intervalo de tempo (s): ');
+
+
+
+% Condicoes iniciais
+fprintf('CONDIÇÕES INICIAIS: \n');
+vc0 = input('Valor da tensão inicial no condensador: \n');
+vl0 = input('Valor da corrente inicial na bobine:   \n');
+
+
+fprintf('DC ou AC: \n');
+acdc = input('Indique se quer uma fonte de corrente ac ou dc\n','s');
+if ismember(acdc,['ac' 'AC' 'Ac' 'aC'])
+
+    onda=input('Indique se quer uma fonte sinusoidal quadrada ou dentes de serra(sin,cos,square,saw)\n','s');
+    if onda=="sin"
+        f=input('Indique a frquencia da fonte: \n');
+        i = @ (t) A*sin(f*2*pi*t);
+
+        rlc = @(t,y)[y(2);
+            i(t)-y(2)/(R*C)-y(1)/(L*C)];
+        [t,y]=ode45(rlc,tempo,[vc0 vl0]);
+
+    elseif onda=="cos"
+        f=input('Indique a frquencia da fonte: \n');
+         i = @ (t) A*cos(f*2*pi*t);
+
+        rlc = @(t,y)[y(2);
+            i(t)-y(2)/(R*C)-y(1)/(L*C)];
+        [t,y]=ode45(rlc,tempo,[vc0 vl0]);
+        
+    elseif onda=="square"
+        f=input('Indique a frquencia da fonte: \n');
+         i = @ (t) A*square(f*2*pi*t);
+
+        rlc = @(t,y)[y(2);
+            i(t)-y(2)/(R*C)-y(1)/(L*C)];
+        [t,y]=ode45(rlc,tempo,[vc0 vl0]);
+        
+    else %sawtooth
+        f=input('Indique a frquencia da fonte: \n');
+         i = @ (t) A*sawtooth(f*2*pi*t);
+
+        rlc = @(t,y)[y(2);
+            i(t)-y(2)/(R*C)-y(1)/(L*C)];
+        [t,y]=ode45(rlc,tempo,[vc0 vl0]);
+
     end
 
-    % Expressão
-    rlc = @(t, y) [y(2); 
-    (i(t)) - y(1)/(L*C) - y(2)/(R*C)];
+else %DC valores fixos
+    rlc = @(t,y)[y(2);
+                A-y(2)/(R*C)-y(1)/(L*C)];
 
-    % Resolução
+    [t,y]=ode45(rlc,tempo,[vc0 vl0]);
+    
+
+end
+
+
+    plot(t,y(:,1));
+    ylabel('tensao Vc (V)')
+    xlabel('tempo (s)')
+    figure
+      
 
 
 
