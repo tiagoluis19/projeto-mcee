@@ -28,11 +28,6 @@ function RLC_Paralelo
     (i(t)) - y(1)/(L*C) - y(2)/(R*C)];
 
     % Resolução
-    
-
-
-
-
 
 
 
