@@ -33,7 +33,7 @@ while 1
 
         case 2 %circuito rc
             clc;
-            fprintf(['selecionou rc\n' ...
+            fprintf(['selecionou rc \n' ...
                 'escolha se quer o citcuto em: \n' ...
                 '1 série\n' ...
                 '2 paralelo\n'])
@@ -77,10 +77,10 @@ while 1
                     ti = input('Indique o valor do itempo inicial (s): \n');
                     tf = input('Indique o valor do itempo final (s):   \n');
                 end
-                R=input('valor da resistencia Ohm');
-                L=input('valor da bobine Henry');
-                C=input('valor do condensador Farad');
-                A=input('valor de amplitude ou dc da fonte de corrente Ampere');
+                R=input('valor da resistencia Ohm ');
+                L=input('valor da bobine Henry ');
+                C=input('valor do condensador Farad ');
+                A=input('valor de amplitude ou dc da fonte de corrente Ampere ');
                 RLC_Paralelo (R, L, C, ti, tf, A);
 
             end
