@@ -3,7 +3,7 @@ function RLC_Paralelo (R, L, C, ti, tf, A)
 
 h=input('intoduza um intervalo entre os pontos (s)');
 if isnan(h)
-    tempo=linspace(ti,tf,20);
+    tempo=linspace(ti,tf,1000);
 else
     if h>=0
         if tf>(h*5)

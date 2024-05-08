@@ -1,9 +1,9 @@
-function RLC_Serie (R, L, C, ti, tf, A)
+function RLC_Serie(R, L, C, ti, tf, A)
 
 
 h=input('intoduza um intervalo entre os pontos (s)');
 if isnan(h)
-    tempo=linspace(ti,tf,20);
+    tempo=linspace(ti,tf,1000);
 else
     if h>=0
         if tf>(h*5)
@@ -31,46 +31,52 @@ if ismember(acdc,['ac' 'AC' 'Ac' 'aC'])
         f=input('Indique a frquencia da fonte: \n');
         i = @ (t) A*sin(f*2*pi*t);
 
-        % rlc = @(t,y)[y(2);
-        %     i(t)-y(2)/(R*C)-y(1)/(L*C)];
-        % [t,y]=ode45(rlc,tempo,[vc0 vl0]); ALTERAR
+        rlcs = @(t,y)[y(2);
+            (R*i(t) - y(1)/(L*C)) / L];
+
+        [t,y]=ode45(rlcs,tempo,[vc0 vl0]);
 
     elseif onda=="cos"
         f=input('Indique a frquencia da fonte: \n');
         i = @ (t) A*cos(f*2*pi*t);
 
-        % rlc = @(t,y)[y(2);
-        %     i(t)-y(2)/(R*C)-y(1)/(L*C)];  ALTERAR
-        % [t,y]=ode45(rlc,tempo,[vc0 vl0]); 
+        rlcs = @(t,y)[y(2);
+            (R*i(t) - y(1)/(L*C)) / L];
+
+        [t,y]=ode45(rlcs,tempo,[vc0 vl0]);
 
     elseif onda=="square"
         f=input('Indique a frquencia da fonte: \n');
         i = @ (t) A*square(f*2*pi*t);
 
-        % rlc = @(t,y)[y(2);
-        %     i(t)-y(2)/(R*C)-y(1)/(L*C)];  ALTERAR
-        % [t,y]=ode45(rlc,tempo,[vc0 vl0]);
+         rlcs = @(t,y)[y(2);
+            (R*i(t) - y(1)/(L*C)) / L];
+
+        [t,y]=ode45(rlcs,tempo,[vc0 vl0]);
 
     else %sawtooth
         f=input('Indique a frquencia da fonte: \n');
         i = @ (t) A*sawtooth(f*2*pi*t);
 
-        % rlc = @(t,y)[y(2);
-        %     i(t)-y(2)/(R*C)-y(1)/(L*C)];  ALTERAR
-        % [t,y]=ode45(rlc,tempo,[vc0 vl0]);
+        rlcs = @(t,y)[y(2);
+            (R*i(t) - y(1)/(L*C)) / L];
+
+        [t,y]=ode45(rlcs,tempo,[vc0 vl0]);
 
     end
 
 else %DC valores fixos
-    % rlc = @(t,y)[y(2);
-    %     A-y(2)/(R*C)-y(1)/(L*C)];  ALTERAR
-    % 
-    % [t,y]=ode45(rlc,tempo,[vc0 vl0]);
+
+    rlcs = @(t,y)[y(2);
+        1/(t.^2.*L.*C + t.*R.*C + 1)];
+
+    [t,y]=ode45(rlcs,tempo,[vc0 vl0]);
 
 end
 
 plot(t,y(:,1));
 ylabel('tensao Vc (V)')
 xlabel('tempo (s)')
+grid on
 
 end
