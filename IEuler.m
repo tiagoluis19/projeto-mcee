@@ -1,16 +1,16 @@
-function y = IEuler(f,x,y0)
-% Utilização:
-% y = EulerODE(f, x, y0), com
-%
-% f é uma função anónima que representa f(x, y)
-% x é um vetor representa pontos discretos
-% y0 é a condição inicial, y(x0)
-n = length(x);
-y = zeros(1, n); % Pré-alocação de memória
-y(1) = y0;
-h = x(2)-x(1);   
-for i = 1 : n - 1
- k1=f(x(i),y(i));
- k2=f(x(i)+0.5*h,y(i)+0.5*h*k1);
- y(i+1) = y(i) + h*k2;
+function [ts,ys] = IEuler(f,tv,y0,N);
+  t0 = tv(1); T = tv(2);
+  h = (T-t0)/N                    % stepsize h
+  ts = zeros(N+1,1); ys = zeros(N+1,length(y0));
+  t = t0; y = y0;                  % initial point
+  ts(1) = t; ys(1,:) = y';
+
+  for i=1:N
+    s1 = f(t,y);                   % evaluate direction field at current point
+    yE = y + s1*h;                 % find Euler value yE
+    s2 = f(t+h,yE);                % evaluate direction field at Euler point
+    y = y + (s1+s2)/2*h;           % use mean (s1+s2)/2 to find new y
+    t = t + h;
+    ts(i+1) = t; ys(i+1,:) = y';   % store y(1),y(2) in row of array ys
+  end
 end

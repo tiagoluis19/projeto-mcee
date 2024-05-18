@@ -1,20 +1,10 @@
 function RLC_Paralelo (R, L, C, ti, tf, A)
 
 
-h=input('intoduza um intervalo entre os pontos (s)');
-if isnan(h)
-    tempo=linspace(ti,tf,1000);
-else
-    if h>=0
-        if tf>(h*5)
-            tempo=ti:h:tf;
-        else
-            tempo=linspace(ti,tf,20);
-        end
-    else
-        tempo=linspace(ti,tf,20);
-    end
-end
+N=input('intoduza o numero de pontos a considerar ');
+
+    tempo=linspace(ti,tf,N);
+
 
 
 
@@ -36,23 +26,27 @@ if ismember(acdc,['ac' 'AC' 'Ac' 'aC'])
 
         rlc = @(t,y)[y(2);
             i(t)/(L*C)-y(2)/(R*C)-y(1)/(L*C)];
-        [t,y]=ode45(rlc,tempo,[vc0 vl0]);
-
+          
+    [t,y] = IEuler(rlc,[ti,tf],[vc0; vl0],N);
+ 
     elseif onda=="cos"
         f=input('Indique a frquencia da fonte: \n');
          i = @ (t) A*cos(f*2*pi*t);
 
         rlc = @(t,y)[y(2);
             i(t)/(L*C)-y(2)/(R*C)-y(1)/(L*C)];
-        [t,y]=ode45(rlc,tempo,[vc0 vl0]);
-        
+           
+    [t,y] = IEuler(rlc,[ti,tf],[vc0; vl0],N);
+ 
     elseif onda=="square"
         f=input('Indique a frquencia da fonte: \n');
          i = @ (t) A*square(f*2*pi*t);
 
         rlc = @(t,y)[y(2);
             i(t)/(L*C)-y(2)/(R*C)-y(1)/(L*C)];
-        [t,y]=ode45(rlc,tempo,[vc0 vl0]);
+         
+    [t,y] = IEuler(rlc,[ti,tf],[vc0; vl0],N);
+ 
         
     else %sawtooth
         f=input('Indique a frquencia da fonte: \n');
@@ -60,7 +54,9 @@ if ismember(acdc,['ac' 'AC' 'Ac' 'aC'])
 
         rlc = @(t,y)[y(2);
             i(t)/(L*C)-y(2)/(R*C)-y(1)/(L*C)];
-        [t,y]=ode45(rlc,tempo,[vc0 vl0]);
+         
+    [t,y] = IEuler(rlc,[ti,tf],[vc0; vl0],N);
+ 
 
     end
 
@@ -68,19 +64,23 @@ else %DC valores fixos
     rlc = @(t,y)[y(2);
             A/(L*C)-y(2)/(R*C)-y(1)/(L*C)];
 
-    y = EulerODE(rlc,tempo,[vc0 vl0]);
-    plot(y)
+    [t,y] = IEuler(rlc,[ti,tf],[vc0; vl0],N);
+ 
   
 
 end
 
 
-    plot(t,y(:,1));
-    ylabel('corrente Il (A)')
-    xlabel('tempo (s)')
-     
-    
-
+subplot(2,1,1)
+plot(t,y(:,1));
+ylabel('corrente I_l (A)')
+xlabel('tempo (s)')
+grid on
+subplot(2,1,2)
+plot(t(1:end),y(:,2).*L)
+ylabel('tensão V_c (V)')
+xlabel('tempo (s)')  
+grid on
 
 
 end
