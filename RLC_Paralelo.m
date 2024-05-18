@@ -68,8 +68,9 @@ else %DC valores fixos
     rlc = @(t,y)[y(2);
             A/(L*C)-y(2)/(R*C)-y(1)/(L*C)];
 
-    [t,y]=ode45(rlc,tempo,[vc0 vl0]);
-    
+    y = EulerODE(rlc,tempo,[vc0 vl0]);
+    plot(y)
+  
 
 end
 
