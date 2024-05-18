@@ -77,8 +77,7 @@ end
     plot(t,y(:,1));
     ylabel('corrente Il (A)')
     xlabel('tempo (s)')
-     figure
-    plot(t,y(:,2)*(L*C));
+     
     
 
 
