@@ -9,7 +9,7 @@ end
 
 % Condicoes iniciais
 fprintf('CONDIÇÕES INICIAIS: \n');
-vl0 = input('Valor da corrente inicial na bobine:   \n');
+vl0 = input('Valor da tensão inicial na bobine:   \n');
 
 fprintf('DC ou AC: \n');
 acdc = input('Indique se quer uma fonte de corrente ac ou dc\n','s');

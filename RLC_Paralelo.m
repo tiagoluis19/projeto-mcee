@@ -7,9 +7,6 @@ if N<30
     N=30;
 end
 
-
-
-
 % Condicoes iniciais
 fprintf('CONDIÇÕES INICIAIS: \n');
 vc0 = input('Valor da tensão inicial no condensador: \n');
