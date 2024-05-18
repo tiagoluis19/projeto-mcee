@@ -35,7 +35,7 @@ if ismember(acdc,['ac' 'AC' 'Ac' 'aC'])
         i = @ (t) A*sin(f*2*pi*t);
 
         rlc = @(t,y)[y(2);
-            i(t)-y(2)/(R*C)-y(1)/(L*C)];
+            i(t)/(L*C)-y(2)/(R*C)-y(1)/(L*C)];
         [t,y]=ode45(rlc,tempo,[vc0 vl0]);
 
     elseif onda=="cos"
@@ -43,7 +43,7 @@ if ismember(acdc,['ac' 'AC' 'Ac' 'aC'])
          i = @ (t) A*cos(f*2*pi*t);
 
         rlc = @(t,y)[y(2);
-            i(t)-y(2)/(R*C)-y(1)/(L*C)];
+            i(t)/(L*C)-y(2)/(R*C)-y(1)/(L*C)];
         [t,y]=ode45(rlc,tempo,[vc0 vl0]);
         
     elseif onda=="square"
@@ -51,7 +51,7 @@ if ismember(acdc,['ac' 'AC' 'Ac' 'aC'])
          i = @ (t) A*square(f*2*pi*t);
 
         rlc = @(t,y)[y(2);
-            i(t)-y(2)/(R*C)-y(1)/(L*C)];
+            i(t)/(L*C)-y(2)/(R*C)-y(1)/(L*C)];
         [t,y]=ode45(rlc,tempo,[vc0 vl0]);
         
     else %sawtooth
@@ -59,14 +59,14 @@ if ismember(acdc,['ac' 'AC' 'Ac' 'aC'])
          i = @ (t) A*sawtooth(f*2*pi*t);
 
         rlc = @(t,y)[y(2);
-            i(t)-y(2)/(R*C)-y(1)/(L*C)];
+            i(t)/(L*C)-y(2)/(R*C)-y(1)/(L*C)];
         [t,y]=ode45(rlc,tempo,[vc0 vl0]);
 
     end
 
 else %DC valores fixos
     rlc = @(t,y)[y(2);
-                A-y(2)/(R*C)-y(1)/(L*C)];
+            A/(L*C)-y(2)/(R*C)-y(1)/(L*C)];
 
     [t,y]=ode45(rlc,tempo,[vc0 vl0]);
     
@@ -75,8 +75,10 @@ end
 
 
     plot(t,y(:,1));
-    ylabel('tensao Vc (V)')
+    ylabel('corrente Il (A)')
     xlabel('tempo (s)')
+     figure
+    plot(t,y(:,2)*(L*C));
     
 
 
