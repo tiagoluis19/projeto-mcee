@@ -59,8 +59,6 @@ while 1
 
             end
 
-
-
         case 2 %circuito rc
             clc;
             fprintf(['selecionou rc \n' ...
@@ -71,15 +69,43 @@ while 1
             if seroupar==1    %se e serie ou paralelo
                 disp('circuito série rc') %serie
 
+                  % Intervalo de tempo
+                fprintf('INTERVALO DE TEMPO: \n');
+                ti = input('Indique o valor do itempo inicial (s): \n');
+                tf = input('Indique o valor do itempo final (s):   \n');
+
+
+                while tf-ti <= 0
+                    fprintf('Deve inserir um valor maior que 0!\n')
+                    ti = input('Indique o valor do itempo inicial (s): \n');
+                    tf = input('Indique o valor do itempo final (s):   \n');
+                end
+                R=input('valor da resistencia Ohm ');
+                C=input('valor do condensador Farad ');
+                A=input('valor de amplitude ou dc da fonte de tensao Volt ');
+
 
             else
                 disp('circuito paralelo rc') %paralelo
+                
+                 % Intervalo de tempo
+                fprintf('INTERVALO DE TEMPO: \n');
+                ti = input('Indique o valor do itempo inicial (s): \n');
+                tf = input('Indique o valor do itempo final (s):   \n');
+
+
+                while tf-ti <= 0
+                    fprintf('Deve inserir um valor maior que 0!\n')
+                    ti = input('Indique o valor do itempo inicial (s): \n');
+                    tf = input('Indique o valor do itempo final (s):   \n');
+                end
+                R=input('valor da resistencia Ohm ');
+                C=input('valor do condensador Farad ');
+                A=input('valor de amplitude ou dc da fonte de tensao Volt ');
+                transform_fontes(R,A)
 
 
             end
-
-
-
 
 
         case 3 %circuito rlc
