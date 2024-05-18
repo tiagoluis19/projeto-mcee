@@ -1,21 +1,11 @@
 function RL_Serie (R, L, ti, tf, A)
 
 
-h=input('intoduza um intervalo entre os pontos (s)');
-if isnan(h)
-    tempo=linspace(ti,tf,1000);
-else
-    if h>=0
-        if tf>(h*5)
-            tempo=ti:h:tf;
-        else
-            tempo=linspace(ti,tf,20);
-        end
-    else
-        tempo=linspace(ti,tf,20);
-    end
-end
+N=input('intoduza o numero de pontos a considerar (mín 30)');
 
+if N<30
+    N=30;
+end
 
 % Condicoes iniciais
 fprintf('CONDIÇÕES INICIAIS: \n');

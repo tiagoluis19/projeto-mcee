@@ -1,7 +1,7 @@
 function [ts,ys] = IEuler(f,tv,y0,N);
   t0 = tv(1); T = tv(2);
   h = (T-t0)/N;                   % stepsize h
-  ts = zeros(N+1,1); ys = zeros(N+1,length(y0));
+  ts = zeros(N+1,1); ys = zeros(N+1,length(y0)); %memory allocation
   t = t0; y = y0;                  % initial point
   ts(1) = t; ys(1,:) = y';
 
