@@ -7,6 +7,9 @@ if N<30
     N=30;
 end
 
+
+
+
 % Condicoes iniciais
 fprintf('CONDIÇÕES INICIAIS: \n');
 vc0 = input('Valor da tensão inicial no condensador: \n');
@@ -66,7 +69,7 @@ else %DC valores fixos
     decisao=input('quer saber algum valor em especifico? ','s');
      if ismember(decisao,['s', 'S', 'sim' ,'Sim']) % sai s e sn for membro do vetor
                ponto= input('qual o ponto em t em que quer o seu resultado');
-               y1=interp1(t,y,ponto,'cubic')
+               y1=interp1(t,y,ponto,'cubic');
                fprintf('resultado %f',y1(1))
      end   
 
