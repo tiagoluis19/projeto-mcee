@@ -55,8 +55,8 @@ while 1
                 L=input('valor da bobine Henry ');
                 C=input('valor do condensador Farad ');
                 A=input('valor de amplitude ou dc da fonte de tensao Volt ');
-                A = transform_fontes(R,A)
-                
+                A = transform_fontes(R,A);
+                RL_Serie(R,L,ti,tf,A);
 
             end
 
