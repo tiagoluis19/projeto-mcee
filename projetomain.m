@@ -35,7 +35,6 @@ while 1
                 end
                 R=input('valor da resistencia Ohm ');
                 L=input('valor da bobine Henry ');
-                C=input('valor do condensador Farad ');
                 A=input('valor de amplitude ou dc da fonte de tensao Volt ');
                 RL_Serie(R,L,ti,tf,A);
 
@@ -54,7 +53,6 @@ while 1
                 end
                 R=input('valor da resistencia Ohm ');
                 L=input('valor da bobine Henry ');
-                C=input('valor do condensador Farad ');
                 A=input('valor de amplitude ou dc da fonte de tensao Volt ');
                 A = transform_fontes(R,A);
                 RL_Serie(R,L,ti,tf,A);

@@ -21,34 +21,34 @@ if ismember(acdc,['ac' 'AC' 'Ac' 'aC'])
         V = @ (t) (A)*sin(f*2*pi*t);
 
         rl = @(t,i)(V(t)-R*i)/L;
-        [t,i]=ode45(rl,tempo, vl0);
+        [t,i] = IEuler(rl,[ti,tf],vl0,N);
 
     elseif onda=="cos"
         f=input('Indique a frquencia da fonte: \n');
         V = @ (t) (A)*cos(f*2*pi*t);
 
         rl = @(t,i)(V(t)-R*i)/L;
-        [t,i]=ode45(rl,tempo, vl0);
+        [t,i] = IEuler(rl,[ti,tf],vl0,N);
         
     elseif onda=="square"
         f=input('Indique a frquencia da fonte: \n');
          V = @ (t) A*square(f*2*pi*t);
 
         rl = @(t,i)(V(t)-R*i)/L;
-        [t,i]=ode45(rl,tempo, vl0);
+        [t,i] = IEuler(rl,[ti,tf],vl0,N);
         
     else %sawtooth
         f=input('Indique a frquencia da fonte: \n');
          V = @ (t) A*sawtooth(f*2*pi*t);
 
         rl = @(t,i)(V(t)-R*i)/L;
-        [t,i]=ode45(rl,tempo, vl0);
+        [t,i] = IEuler(rl,[ti,tf],vl0,N);
         
     end
 
 else %DC valores fixos
     rl = @(t,i)(A-R*i)/L;
-    [t,i]=ode45(rl,tempo, vl0);
+    [t,i] = IEuler(rl,[ti,tf],vl0,N);
 
 end
 
