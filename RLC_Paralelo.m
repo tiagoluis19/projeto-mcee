@@ -1,10 +1,11 @@
 function RLC_Paralelo (R, L, C, ti, tf, A)
 
 
-N=input('intoduza o numero de pontos a considerar ');
+N=input('intoduza o numero de pontos a considerar (mín 30)');
 
-    tempo=linspace(ti,tf,N);
-
+if N<30
+    N=30;
+end
 
 
 
@@ -26,47 +27,47 @@ if ismember(acdc,['ac' 'AC' 'Ac' 'aC'])
 
         rlc = @(t,y)[y(2);
             i(t)/(L*C)-y(2)/(R*C)-y(1)/(L*C)];
-          
-    [t,y] = IEuler(rlc,[ti,tf],[vc0; vl0],N);
- 
+
+        [t,y] = IEuler(rlc,[ti,tf],[vc0; vl0],N);
+
     elseif onda=="cos"
         f=input('Indique a frquencia da fonte: \n');
-         i = @ (t) A*cos(f*2*pi*t);
+        i = @ (t) A*cos(f*2*pi*t);
 
         rlc = @(t,y)[y(2);
             i(t)/(L*C)-y(2)/(R*C)-y(1)/(L*C)];
-           
-    [t,y] = IEuler(rlc,[ti,tf],[vc0; vl0],N);
- 
+
+        [t,y] = IEuler(rlc,[ti,tf],[vc0; vl0],N);
+
     elseif onda=="square"
         f=input('Indique a frquencia da fonte: \n');
-         i = @ (t) A*square(f*2*pi*t);
+        i = @ (t) A*square(f*2*pi*t);
 
         rlc = @(t,y)[y(2);
             i(t)/(L*C)-y(2)/(R*C)-y(1)/(L*C)];
-         
-    [t,y] = IEuler(rlc,[ti,tf],[vc0; vl0],N);
- 
-        
+
+        [t,y] = IEuler(rlc,[ti,tf],[vc0; vl0],N);
+
+
     else %sawtooth
         f=input('Indique a frquencia da fonte: \n');
-         i = @ (t) A*sawtooth(f*2*pi*t);
+        i = @ (t) A*sawtooth(f*2*pi*t);
 
         rlc = @(t,y)[y(2);
             i(t)/(L*C)-y(2)/(R*C)-y(1)/(L*C)];
-         
-    [t,y] = IEuler(rlc,[ti,tf],[vc0; vl0],N);
- 
+
+        [t,y] = IEuler(rlc,[ti,tf],[vc0; vl0],N);
+
 
     end
 
 else %DC valores fixos
     rlc = @(t,y)[y(2);
-            A/(L*C)-y(2)/(R*C)-y(1)/(L*C)];
+        A/(L*C)-y(2)/(R*C)-y(1)/(L*C)];
 
     [t,y] = IEuler(rlc,[ti,tf],[vc0; vl0],N);
- 
-  
+
+
 
 end
 
@@ -79,7 +80,7 @@ grid on
 subplot(2,1,2)
 plot(t(1:end),y(:,2).*L)
 ylabel('tensão V_c (V)')
-xlabel('tempo (s)')  
+xlabel('tempo (s)')
 grid on
 
 

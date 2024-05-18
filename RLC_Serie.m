@@ -3,7 +3,9 @@ function RLC_Serie(R, L, C, ti, tf, A)
 
 N=input('intoduza o numero de pontos a considerar ');
 
-    tempo=linspace(ti,tf,N);
+if N<30
+    N=30;
+end
 
 % Condicoes iniciais
 fprintf('CONDIÇÕES INICIAIS: \n');
@@ -20,34 +22,34 @@ if ismember(acdc,['ac' 'AC' 'Ac' 'aC'])
         f=input('Indique a frquencia da fonte: \n');
         vs = @ (t) A*sin(f*2*pi*t);
 
-         rlcs = @(t,y)[y(2);
+        rlcs = @(t,y)[y(2);
             vs(t)/(L*C)-y(2)*R/(L)-y(1)/(L*C)];
 
 
-         [t,y] = IEuler(rlcs,[ti,tf],[vc0; vl0],N);
- 
+        [t,y] = IEuler(rlcs,[ti,tf],[vc0; vl0],N);
+
 
     elseif onda=="cos"
         f=input('Indique a frquencia da fonte: \n');
         vs = @ (t) A*cos(f*2*pi*t);
 
-         rlcs = @(t,y)[y(2);
+        rlcs = @(t,y)[y(2);
             vs(t)/(L*C)-y(2)*R/(L)-y(1)/(L*C)];
 
 
-         [t,y] = IEuler(rlcs,[ti,tf],[vc0; vl0],N);
- 
+        [t,y] = IEuler(rlcs,[ti,tf],[vc0; vl0],N);
+
 
     elseif onda=="square"
         f=input('Indique a frquencia da fonte: \n');
         vs = @ (t) A*square(f*2*pi*t);
 
-          rlcs = @(t,y)[y(2);
+        rlcs = @(t,y)[y(2);
             vs(t)/(L*C)-y(2)*R/(L)-y(1)/(L*C)];
 
 
         [t,y] = IEuler(rlcs,[ti,tf],[vc0; vl0],N);
- 
+
     else %sawtooth
         f=input('Indique a frquencia da fonte: \n');
         vs = @ (t) A*sawtooth(f*2*pi*t);
@@ -55,18 +57,18 @@ if ismember(acdc,['ac' 'AC' 'Ac' 'aC'])
         rlcs = @(t,y)[y(2);
             vs(t)/(L*C)-y(2)*R/(L)-y(1)/(L*C)];
 
-         [t,y] = IEuler(rlcs,[ti,tf],[vc0; vl0],N);
- 
+        [t,y] = IEuler(rlcs,[ti,tf],[vc0; vl0],N);
+
     end
 
 else %DC valores fixos
 
     rlcs = @(t,y)[y(2);
-            A/(L*C)-y(2)*R/(L)-y(1)/(L*C)];
+        A/(L*C)-y(2)*R/(L)-y(1)/(L*C)];
 
-     [t,y] = IEuler(rlcs,[ti,tf],[vc0; vl0],N);
- 
-    
+    [t,y] = IEuler(rlcs,[ti,tf],[vc0; vl0],N);
+
+
 end
 subplot(2,1,1)
 plot(t,y(:,1));
