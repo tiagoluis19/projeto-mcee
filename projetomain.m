@@ -37,6 +37,7 @@ while 1
                 L=input('valor da bobine Henry ');
                 C=input('valor do condensador Farad ');
                 A=input('valor de amplitude ou dc da fonte de tensao Volt ');
+                RL_Serie(R,L,ti,tf,A);
 
             else
                 disp('circuito paralelo rl') %paralelo
