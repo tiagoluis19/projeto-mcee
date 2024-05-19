@@ -83,7 +83,7 @@ while 1
                 R=input('valor da resistencia Ohm ');
                 C=input('valor do condensador Farad ');
                 A=input('valor de amplitude ou dc da fonte de tensao Volt ');
-
+                RC_Serie(R,C,ti,tf,A);
 
             else
                 disp('circuito paralelo rc') %paralelo
@@ -103,7 +103,7 @@ while 1
                 C=input('valor do condensador Farad ');
                 A=input('valor de amplitude ou dc da fonte de tensao Volt ');
                 transform_fontes(R,A)
-
+                RC_Serie(R,C,ti,tf,A);
 
             end
 

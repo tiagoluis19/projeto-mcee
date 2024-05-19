@@ -52,9 +52,16 @@ else %DC valores fixos
 
 end
 
-    plot(t,i);
-    ylabel('corrente Il (A)')
-    xlabel('tempo (s)')
+       subplot(2,1,1)
+plot(t,i);
+ylabel('corrente I_l (A)')
+xlabel('tempo (s)')
+grid on
+subplot(2,1,2)
+plot(t(1:end-1),diff(i)*L)
+ylabel('tensão V_c (V)')
+xlabel('tempo (s)')
+
    
 
 end

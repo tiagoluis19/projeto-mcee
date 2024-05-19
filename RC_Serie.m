@@ -19,41 +19,47 @@ if ismember(acdc,['ac' 'AC' 'Ac' 'aC'])
         f=input('Indique a frquencia da fonte: \n');
         V = @ (t) (A)*sin(f*2*pi*t);
 
-        rc = @(t,v)(1/(R*C))*(V(t) - v);
+        rc = @(t,v)(V(t) - v)/(R*C);
         [t,v] = IEuler(rc,[ti,tf],vc0,N);
 
     elseif onda=="cos"
         f=input('Indique a frquencia da fonte: \n');
         V = @ (t) (A)*cos(f*2*pi*t);
 
-        rc = @(t,v)(1/(R*C))*(V(t) - v);
+        rc = @(t,v)(V(t) - v)/(R*C);
         [t,v] = IEuler(rc,[ti,tf],vc0,N);
 
     elseif onda=="square"
         f=input('Indique a frquencia da fonte: \n');
          V = @ (t) A*square(f*2*pi*t);
 
-        rc = @(t,v)(1/(R*C))*(V(t) - v);
+        rc = @(t,v)(V(t) - v)/(R*C);
         [t,v] = IEuler(rc,[ti,tf],vc0,N);
         
     else %sawtooth
         f=input('Indique a frquencia da fonte: \n');
          V = @ (t) A*sawtooth(f*2*pi*t);
 
-        rc = @(t,v)(1/(R*C))*(V(t) - v);
+        rc = @(t,v)(V(t) - v)/(R*C);
         [t,v] = IEuler(rc,[ti,tf],vc0,N);
         
     end
 
 else %DC valores fixos
-    rc = @(t,v)(1/(R*C))*(A - v);
+    rc = @(t,v)(A - v)/(R*C);
     [t,v] = IEuler(rc,[ti,tf],vc0,N);
 
 end
 
-    plot(t,v);
-    ylabel('corrente Il (A)')
-    xlabel('tempo (s)')
-   
+    subplot(2,1,1)
+plot(t,v);
+ylabel('tensão V_c (V)')
+xlabel('tempo (s)')
+grid on
+subplot(2,1,2)
+plot(t(1:end-1),diff(v)*C)
+ylabel('corrente I_l (A)')
+xlabel('tempo (s)')
+
 
 end
