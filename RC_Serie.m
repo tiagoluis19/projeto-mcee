@@ -48,6 +48,12 @@ if ismember(acdc,['ac' 'AC' 'Ac' 'aC'])
 else %DC valores fixos
     rc = @(t,v)(A - v)/(R*C);
     [t,v] = IEuler(rc,[ti,tf],vc0,N);
+                decisao=input('quer saber algum valor em especifico?(s/n) ','s');
+     if ismember(decisao,['s', 'S', 'sim' ,'Sim']) % sai s e sn for membro do vetor
+               ponto= input('qual o ponto em t em que quer o seu resultado');
+               y1=interp1(t,y,ponto,'cubic');
+               fprintf('resultado %f V \n',y1(1))
+     end      
 
 end
 

@@ -66,12 +66,12 @@ else %DC valores fixos
         A/(L*C)-y(2)/(R*C)-y(1)/(L*C)];
 
     [t,y] = IEuler(rlc,[ti,tf],[vc0; vl0],N);
-    decisao=input('quer saber algum valor em especifico? ','s');
+        decisao=input('quer saber algum valor em especifico?(s/n) ','s');
      if ismember(decisao,['s', 'S', 'sim' ,'Sim']) % sai s e sn for membro do vetor
                ponto= input('qual o ponto em t em que quer o seu resultado');
                y1=interp1(t,y,ponto,'cubic');
-               fprintf('resultado %f',y1(1))
-     end   
+               fprintf('resultado %f A \n',y1(1))
+     end     
 
 
 
