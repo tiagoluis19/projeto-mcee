@@ -61,7 +61,7 @@ subplot(2,1,2)
 plot(t(1:end-1),diff(i)*L)
 ylabel('tensão V_c (V)')
 xlabel('tempo (s)')
-
+grid on
    
 
 end

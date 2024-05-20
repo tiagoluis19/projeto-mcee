@@ -60,6 +60,6 @@ subplot(2,1,2)
 plot(t(1:end-1),diff(v)*C)
 ylabel('corrente I_l (A)')
 xlabel('tempo (s)')
-
+grid on
 
 end

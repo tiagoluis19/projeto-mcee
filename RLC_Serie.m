@@ -79,7 +79,7 @@ subplot(2,1,2)
 plot(t,y(:,2)*C)
 ylabel('corrente I_l (A)')
 xlabel('tempo (s)')
-
+grid on
 
 
 end
