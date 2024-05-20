@@ -1,3 +1,3 @@
 function A = transform_fontes (R, A)
-A = A/R;
+A = A*R;
 end

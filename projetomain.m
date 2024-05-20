@@ -166,7 +166,7 @@ while 1
                 's - sim \n' ...
                 'n- não \n'])
             sn=input('opção: ','s');
-            if ismember(sn,['s', 'S', 'sim' ,'Sim']) % sai s e sn for membro do vetor
+            if ismember(sn,['s', 'S', 'sim' ,'Sim']) % sai se sn for membro do vetor
                 return
             end
 
