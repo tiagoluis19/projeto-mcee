@@ -6,7 +6,7 @@ N=input('intoduza o numero de pontos a considerar ');
 if N<30
     N=30;
 end
-
+vs1
 % Condicoes iniciais
 fprintf('CONDIÇÕES INICIAIS: \n');
 vc0 = input('Valor da tensão inicial no condensador: \n');
@@ -21,7 +21,7 @@ if ismember(acdc,['ac' 'AC' 'Ac' 'aC'])
     if onda=="sin"
         f=input('Indique a frquencia da fonte: \n');
         vs = @ (t) A*sin(f*2*pi*t);
-
+           vs1=vs;
         rlcs = @(t,y)[y(2);
             vs(t)/(L*C)-y(2)*R/(L)-y(1)/(L*C)];
 
@@ -32,7 +32,7 @@ if ismember(acdc,['ac' 'AC' 'Ac' 'aC'])
     elseif onda=="cos"
         f=input('Indique a frquencia da fonte: \n');
         vs = @ (t) A*cos(f*2*pi*t);
-
+         vs1=vs;
         rlcs = @(t,y)[y(2);
             vs(t)/(L*C)-y(2)*R/(L)-y(1)/(L*C)];
 
@@ -43,7 +43,7 @@ if ismember(acdc,['ac' 'AC' 'Ac' 'aC'])
     elseif onda=="square"
         f=input('Indique a frquencia da fonte: \n');
         vs = @ (t) A*square(f*2*pi*t);
-
+         vs1=vs;
         rlcs = @(t,y)[y(2);
             vs(t)/(L*C)-y(2)*R/(L)-y(1)/(L*C)];
 
@@ -53,7 +53,7 @@ if ismember(acdc,['ac' 'AC' 'Ac' 'aC'])
     else %sawtooth
         f=input('Indique a frquencia da fonte: \n');
         vs = @ (t) A*sawtooth(f*2*pi*t);
-
+          vs1=vs;
         rlcs = @(t,y)[y(2);
             vs(t)/(L*C)-y(2)*R/(L)-y(1)/(L*C)];
 
@@ -65,7 +65,7 @@ else %DC valores fixos
 
     rlcs = @(t,y)[y(2);
         A/(L*C)-y(2)*R/(L)-y(1)/(L*C)];
-
+        vs1=A;
     [t,y] = IEuler(rlcs,[ti,tf],[vc0; vl0],N);
         decisao=input('quer saber algum valor em especifico?(s/n) ','s');
      if ismember(decisao,['s', 'S', 'sim' ,'Sim']) % sai s e sn for membro do vetor
@@ -83,9 +83,23 @@ xlabel('tempo (s)')
 grid on
 subplot(2,1,2)
 plot(t,y(:,2)*C)
-ylabel('corrente I_l (A)')
+ylabel('corrente I_c (A)')
 xlabel('tempo (s)')
 grid on
+
+
+figure
+title('Corrente e tensao na resistencia')
+subplot(2,1,2)
+plot(t(1:end),y(:,2).*C)
+ylabel('corrente I_r (A)')
+xlabel('tempo (s)')
+
+subplot(2,1,1)
+plot(t(1:end),y(:,2).*C*R)
+ylabel('Tensao V_r (V)')
+xlabel('tempo (s)')
+
 
 
 end

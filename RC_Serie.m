@@ -58,6 +58,7 @@ else %DC valores fixos
 end
 
     subplot(2,1,1)
+title('Tensao e corrente no condensador')
 plot(t,v);
 ylabel('tensão V_c (V)')
 xlabel('tempo (s)')
@@ -68,4 +69,15 @@ ylabel('corrente I_l (A)')
 xlabel('tempo (s)')
 grid on
 
+figure
+subplot(2,1,1)
+title('Tensao na resistencia em serie')
+plot(t(1:end-1),diff(v)*C*R)
+ylabel('Tensao V_r (V)')
+xlabel('tempo (s)')
+subplot(2,1,2)
+plot(t(1:end-1),diff(v)*C)
+ylabel('corrente I_r (A)')
+xlabel('tempo (s)')
+grid on
 end

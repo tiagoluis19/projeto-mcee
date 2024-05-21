@@ -69,5 +69,16 @@ ylabel('tensão V_c (V)')
 xlabel('tempo (s)')
 grid on
    
+figure
+title('Tensao na resistencia em serie')
+subplot(2,1,1)
+plot(t,i*R)
+ylabel('Tensao V_r (V)')
+xlabel('tempo (s)')
+subplot(2,1,2)
+plot(t,i);
+ylabel('corrente I_r (A)')
+xlabel('tempo (s)')
+grid on
 
 end
