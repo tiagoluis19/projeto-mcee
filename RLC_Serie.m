@@ -94,12 +94,12 @@ subplot(2,1,2)
 plot(t(1:end),y(:,2).*C)
 ylabel('corrente I_r (A)')
 xlabel('tempo (s)')
-
+grid on
 subplot(2,1,1)
 plot(t(1:end),y(:,2).*C*R)
 ylabel('Tensao V_r (V)')
 xlabel('tempo (s)')
-
+grid on
 
 
 end

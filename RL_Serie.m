@@ -57,7 +57,8 @@ else %DC valores fixos
      end   
 
 end
-
+figure('Name','Tensao e corrente na bobine')
+title('tensao e corrente na bobine')
        subplot(2,1,1)
 plot(t,i);
 ylabel('corrente I_l (A)')
@@ -65,12 +66,13 @@ xlabel('tempo (s)')
 grid on
 subplot(2,1,2)
 plot(t(1:end-1),diff(i)*L)
-ylabel('tensão V_c (V)')
+ylabel('tensão V_l (V)')
 xlabel('tempo (s)')
 grid on
    
-figure
-title('Tensao na resistencia em serie')
+figure('Name','Tensao e corrente na resistencia')
+
+
 subplot(2,1,1)
 plot(t,i*R)
 ylabel('Tensao V_r (V)')
