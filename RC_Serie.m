@@ -75,6 +75,7 @@ title('Tensao na resistencia em serie')
 plot(t(1:end-1),diff(v)*C*R)
 ylabel('Tensao V_r (V)')
 xlabel('tempo (s)')
+grid on
 subplot(2,1,2)
 plot(t(1:end-1),diff(v)*C)
 ylabel('corrente I_r (A)')
