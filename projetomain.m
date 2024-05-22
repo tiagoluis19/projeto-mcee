@@ -24,8 +24,8 @@ while 1
 
                  % Intervalo de tempo
                 fprintf('INTERVALO DE TEMPO: \n');
-                ti = input('Indique o valor do itempo inicial (s): \n');
-                tf = input('Indique o valor do itempo final (s):   \n');
+                ti = input('Indique o valor do tempo inicial (s): \n');
+                tf = input('Indique o valor do tempo final (s):   \n');
 
 
                 while tf-ti <= 0
@@ -42,14 +42,14 @@ while 1
                 disp('circuito paralelo rl') %paralelo
                  % Intervalo de tempo
                 fprintf('INTERVALO DE TEMPO: \n');
-                ti = input('Indique o valor do itempo inicial (s): \n');
-                tf = input('Indique o valor do itempo final (s):   \n');
+                ti = input('Indique o valor do tempo inicial (s): \n');
+                tf = input('Indique o valor do tempo final (s):   \n');
 
 
                 while tf-ti <= 0
                     fprintf('Deve inserir um valor maior que 0!\n')
-                    ti = input('Indique o valor do itempo inicial (s): \n');
-                    tf = input('Indique o valor do itempo final (s):   \n');
+                    ti = input('Indique o valor do tempo inicial (s): \n');
+                    tf = input('Indique o valor do tempo final (s):   \n');
                 end
                 R=input('valor da resistencia Ohm ');
                 L=input('valor da bobine Henry ');
@@ -71,14 +71,14 @@ while 1
 
                   % Intervalo de tempo
                 fprintf('INTERVALO DE TEMPO: \n');
-                ti = input('Indique o valor do itempo inicial (s): \n');
-                tf = input('Indique o valor do itempo final (s):   \n');
+                ti = input('Indique o valor do tempo inicial (s): \n');
+                tf = input('Indique o valor do tempo final (s):   \n');
 
 
                 while tf-ti <= 0
                     fprintf('Deve inserir um valor maior que 0!\n')
-                    ti = input('Indique o valor do itempo inicial (s): \n');
-                    tf = input('Indique o valor do itempo final (s):   \n');
+                    ti = input('Indique o valor do tempo inicial (s): \n');
+                    tf = input('Indique o valor do tempo final (s):   \n');
                 end
                 R=input('valor da resistencia Ohm ');
                 C=input('valor do condensador Farad ');
@@ -90,14 +90,14 @@ while 1
                 
                  % Intervalo de tempo
                 fprintf('INTERVALO DE TEMPO: \n');
-                ti = input('Indique o valor do itempo inicial (s): \n');
-                tf = input('Indique o valor do itempo final (s):   \n');
+                ti = input('Indique o valor do tempo inicial (s): \n');
+                tf = input('Indique o valor do tempo final (s):   \n');
 
 
                 while tf-ti <= 0
                     fprintf('Deve inserir um valor maior que 0!\n')
-                    ti = input('Indique o valor do itempo inicial (s): \n');
-                    tf = input('Indique o valor do itempo final (s):   \n');
+                    ti = input('Indique o valor do tempo inicial (s): \n');
+                    tf = input('Indique o valor do tempo final (s):   \n');
                 end
                 R=input('valor da resistencia Ohm ');
                 C=input('valor do condensador Farad ');
@@ -120,14 +120,14 @@ while 1
                    
                 % Intervalo de tempo
                 fprintf('INTERVALO DE TEMPO: \n');
-                ti = input('Indique o valor do itempo inicial (s): \n');
-                tf = input('Indique o valor do itempo final (s):   \n');
+                ti = input('Indique o valor do tempo inicial (s): \n');
+                tf = input('Indique o valor do tempo final (s):   \n');
 
 
                 while tf-ti <= 0
                     fprintf('Deve inserir um valor maior que 0!\n')
-                    ti = input('Indique o valor do itempo inicial (s): \n');
-                    tf = input('Indique o valor do itempo final (s):   \n');
+                    ti = input('Indique o valor do tempo inicial (s): \n');
+                    tf = input('Indique o valor do tempo final (s):   \n');
                 end
                 R=input('valor da resistencia Ohm ');
                 L=input('valor da bobine Henry ');
@@ -140,14 +140,14 @@ while 1
 
                 % Intervalo de tempo
                 fprintf('INTERVALO DE TEMPO: \n');
-                ti = input('Indique o valor do itempo inicial (s): \n');
-                tf = input('Indique o valor do itempo final (s):   \n');
+                ti = input('Indique o valor do tempo inicial (s): \n');
+                tf = input('Indique o valor do tempo final (s):   \n');
 
 
                 while tf-ti <= 0
                     fprintf('Deve inserir um valor maior que 0!\n')
-                    ti = input('Indique o valor do itempo inicial (s): \n');
-                    tf = input('Indique o valor do itempo final (s):   \n');
+                    ti = input('Indique o valor do tempo inicial (s): \n');
+                    tf = input('Indique o valor do tempo final (s):   \n');
                 end
                 R=input('valor da resistencia Ohm ');
                 L=input('valor da bobine Henry ');
