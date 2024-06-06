@@ -77,9 +77,8 @@ else %DC valores fixos
 
 end
 
-figure('Name','Tensao e corrente na bobine')
+
 subplot(2,1,1)
-title('Corrente e tensao no condensador')
 plot(t,y(:,1));
 ylabel('corrente I_l (A)')
 xlabel('tempo (s)')
@@ -90,8 +89,8 @@ ylabel('tensão V_c (V)')
 xlabel('tempo (s)')
 grid on
 
+figure
 
-figure('Name','Tensao e corrente na resistencia')
 title('Corrente e tensao na resistencia')
 subplot(2,1,2)
 plot(t(1:end),y(:,2).*L)

@@ -52,7 +52,7 @@ else %DC valores fixos
                 decisao=input('quer saber algum valor em especifico?(s/n) ','s');
      if ismember(decisao,['s', 'S', 'sim' ,'Sim']) % sai s e sn for membro do vetor
                ponto= input('qual o ponto em t em que quer o seu resultado');
-               y1=interp1(t,y,ponto,'cubic');
+               y1=interp1(t,i,ponto,'cubic');
                fprintf('resultado %f A \n',y1(1))
      end   
 
@@ -65,7 +65,7 @@ ylabel('corrente I_l (A)')
 xlabel('tempo (s)')
 grid on
 subplot(2,1,2)
-plot(t(1:end-1),diff(i)*L)
+plot(t(1:end-1),diff(i)*L./diff(t))
 ylabel('tensão V_l (V)')
 xlabel('tempo (s)')
 grid on

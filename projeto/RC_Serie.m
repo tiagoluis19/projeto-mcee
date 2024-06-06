@@ -51,12 +51,12 @@ else %DC valores fixos
                 decisao=input('quer saber algum valor em especifico?(s/n) ','s');
      if ismember(decisao,['s', 'S', 'sim' ,'Sim']) % sai s e sn for membro do vetor
                ponto= input('qual o ponto em t em que quer o seu resultado');
-               y1=interp1(t,v,ponto,'cubic');
+               y1=interp1(t,y,ponto,'cubic');
                fprintf('resultado %f V \n',y1(1))
      end      
 
 end
-figure('Name','Tensao e corrente no condensador')
+
     subplot(2,1,1)
 title('Tensao e corrente no condensador')
 plot(t,v);
@@ -64,13 +64,12 @@ ylabel('tensão V_c (V)')
 xlabel('tempo (s)')
 grid on
 subplot(2,1,2)
-plot(t(1:end-1),diff(v)*C./diff(t))
+plot(t(1:end-1),diff(v)*C)
 ylabel('corrente I_l (A)')
 xlabel('tempo (s)')
 grid on
 
-
-figure('Name','Tensao e corrente na resistencia')
+figure
 subplot(2,1,1)
 title('Tensao na resistencia em serie')
 plot(t(1:end-1),diff(v)*C*R)
